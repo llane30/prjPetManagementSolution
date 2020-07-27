@@ -31,4 +31,29 @@
             Return boolLogin
         End Get
     End Property
+
+    Public ReadOnly Property Username As String
+        Get
+            Return strUsername
+        End Get
+    End Property
+
+    Public ReadOnly Property FirstName As String
+        Get
+            Return strFirstname
+        End Get
+    End Property
+
+    Public ReadOnly Property LastName As String
+        Get
+            Return strLastname
+        End Get
+    End Property
+
+    Public ReadOnly Property Type As String
+        Get
+            Return strType
+        End Get
+    End Property
+
 End Class

@@ -59,18 +59,19 @@ Partial Class frmMain
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnTestConnection = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
+        Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.statusDeveloped = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PetsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BreedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OwnerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgPets, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -434,27 +435,29 @@ Partial Class frmMain
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusUser, Me.statusDeveloped})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 465)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1059, 22)
         Me.StatusStrip1.TabIndex = 10
         Me.StatusStrip1.Text = "Llanne Enumerables"
         '
-        'ToolStripStatusLabel1
+        'statusUser
         '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(235, 17)
-        Me.ToolStripStatusLabel1.Text = "Developed by: Llanne Enumerables (c) 2020"
+        Me.statusUser.Name = "statusUser"
+        Me.statusUser.Size = New System.Drawing.Size(506, 17)
+        Me.statusUser.Spring = True
+        Me.statusUser.Text = "User: LLane"
+        Me.statusUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'StatusStrip2
+        'statusDeveloped
         '
-        Me.StatusStrip2.Location = New System.Drawing.Point(0, 443)
-        Me.StatusStrip2.Name = "StatusStrip2"
-        Me.StatusStrip2.Size = New System.Drawing.Size(1059, 22)
-        Me.StatusStrip2.TabIndex = 11
-        Me.StatusStrip2.Text = "StatusStrip2"
+        Me.statusDeveloped.Name = "statusDeveloped"
+        Me.statusDeveloped.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.statusDeveloped.Size = New System.Drawing.Size(506, 17)
+        Me.statusDeveloped.Spring = True
+        Me.statusDeveloped.Text = "Developed by: Llanne Enumerables (c) 2020"
+        Me.statusDeveloped.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'MenuStrip1
         '
@@ -472,13 +475,6 @@ Partial Class frmMain
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(43, 20)
         Me.ToolStripMenuItem1.Text = "PMS"
         '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PetsToolStripMenuItem, Me.TypeToolStripMenuItem, Me.BreedToolStripMenuItem, Me.OwnerToolStripMenuItem})
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(76, 20)
-        Me.ToolStripMenuItem2.Text = "Master File"
-        '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
@@ -488,38 +484,52 @@ Partial Class frmMain
         'QuitToolStripMenuItem
         '
         Me.QuitToolStripMenuItem.Name = "QuitToolStripMenuItem"
-        Me.QuitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.QuitToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.QuitToolStripMenuItem.Text = "&Quit"
+        '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PetsToolStripMenuItem, Me.TypeToolStripMenuItem, Me.BreedToolStripMenuItem, Me.OwnerToolStripMenuItem})
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(76, 20)
+        Me.ToolStripMenuItem2.Text = "Master File"
         '
         'PetsToolStripMenuItem
         '
         Me.PetsToolStripMenuItem.Name = "PetsToolStripMenuItem"
-        Me.PetsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PetsToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.PetsToolStripMenuItem.Text = "Pets"
         '
         'TypeToolStripMenuItem
         '
         Me.TypeToolStripMenuItem.Name = "TypeToolStripMenuItem"
-        Me.TypeToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TypeToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.TypeToolStripMenuItem.Text = "Type"
         '
         'BreedToolStripMenuItem
         '
         Me.BreedToolStripMenuItem.Name = "BreedToolStripMenuItem"
-        Me.BreedToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BreedToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.BreedToolStripMenuItem.Text = "Breed"
         '
         'OwnerToolStripMenuItem
         '
         Me.OwnerToolStripMenuItem.Name = "OwnerToolStripMenuItem"
-        Me.OwnerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.OwnerToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
         Me.OwnerToolStripMenuItem.Text = "Owner"
         '
         'SettingsToolStripMenuItem
         '
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'UsersToolStripMenuItem
+        '
+        Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UsersToolStripMenuItem.Text = "Users"
         '
         'frmMain
         '
@@ -527,7 +537,6 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonShadow
         Me.ClientSize = New System.Drawing.Size(1059, 487)
-        Me.Controls.Add(Me.StatusStrip2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.btnTestConnection)
@@ -599,8 +608,7 @@ Partial Class frmMain
     Friend WithEvents cboStatus As ComboBox
     Friend WithEvents btnTestConnection As Button
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents StatusStrip2 As StatusStrip
+    Friend WithEvents statusDeveloped As ToolStripStatusLabel
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
@@ -611,4 +619,6 @@ Partial Class frmMain
     Friend WithEvents BreedToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents OwnerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents statusUser As ToolStripStatusLabel
+    Friend WithEvents UsersToolStripMenuItem As ToolStripMenuItem
 End Class

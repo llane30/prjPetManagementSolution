@@ -30,13 +30,20 @@ Partial Class frmPetOwner
         Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
+        Me.dgOwner = New System.Windows.Forms.DataGridView()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtID = New System.Windows.Forms.TextBox()
+        Me.btnActive = New System.Windows.Forms.Button()
+        Me.btnDeactive = New System.Windows.Forms.Button()
+        Me.btnPlus = New System.Windows.Forms.Button()
+        CType(Me.dgOwner, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(42, 43)
+        Me.Label1.Location = New System.Drawing.Point(42, 69)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(48, 19)
         Me.Label1.TabIndex = 0
@@ -44,7 +51,7 @@ Partial Class frmPetOwner
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(112, 42)
+        Me.txtName.Location = New System.Drawing.Point(98, 67)
         Me.txtName.Multiline = True
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(126, 21)
@@ -54,7 +61,7 @@ Partial Class frmPetOwner
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(35, 78)
+        Me.Label2.Location = New System.Drawing.Point(28, 103)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(62, 19)
         Me.Label2.TabIndex = 2
@@ -64,7 +71,7 @@ Partial Class frmPetOwner
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(42, 113)
+        Me.Label3.Location = New System.Drawing.Point(42, 139)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 19)
         Me.Label3.TabIndex = 3
@@ -72,7 +79,7 @@ Partial Class frmPetOwner
         '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(113, 77)
+        Me.txtAddress.Location = New System.Drawing.Point(96, 101)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(126, 21)
@@ -80,7 +87,7 @@ Partial Class frmPetOwner
         '
         'txtPhone
         '
-        Me.txtPhone.Location = New System.Drawing.Point(113, 112)
+        Me.txtPhone.Location = New System.Drawing.Point(98, 137)
         Me.txtPhone.Multiline = True
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(126, 21)
@@ -90,7 +97,7 @@ Partial Class frmPetOwner
         '
         Me.btnAdd.BackColor = System.Drawing.Color.SkyBlue
         Me.btnAdd.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(62, 157)
+        Me.btnAdd.Location = New System.Drawing.Point(32, 199)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(85, 34)
         Me.btnAdd.TabIndex = 6
@@ -101,19 +108,85 @@ Partial Class frmPetOwner
         '
         Me.btnExit.BackColor = System.Drawing.Color.Blue
         Me.btnExit.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(154, 157)
+        Me.btnExit.Location = New System.Drawing.Point(137, 199)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(85, 34)
         Me.btnExit.TabIndex = 7
         Me.btnExit.Text = "E&XIT"
         Me.btnExit.UseVisualStyleBackColor = False
         '
+        'dgOwner
+        '
+        Me.dgOwner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgOwner.Location = New System.Drawing.Point(275, 12)
+        Me.dgOwner.Name = "dgOwner"
+        Me.dgOwner.Size = New System.Drawing.Size(398, 194)
+        Me.dgOwner.TabIndex = 8
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(44, 39)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(27, 19)
+        Me.Label4.TabIndex = 9
+        Me.Label4.Text = "ID:"
+        '
+        'txtID
+        '
+        Me.txtID.Location = New System.Drawing.Point(96, 40)
+        Me.txtID.Multiline = True
+        Me.txtID.Name = "txtID"
+        Me.txtID.Size = New System.Drawing.Size(126, 21)
+        Me.txtID.TabIndex = 10
+        '
+        'btnActive
+        '
+        Me.btnActive.BackColor = System.Drawing.Color.SkyBlue
+        Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActive.Location = New System.Drawing.Point(417, 212)
+        Me.btnActive.Name = "btnActive"
+        Me.btnActive.Size = New System.Drawing.Size(119, 34)
+        Me.btnActive.TabIndex = 11
+        Me.btnActive.Text = "Active"
+        Me.btnActive.UseVisualStyleBackColor = False
+        '
+        'btnDeactive
+        '
+        Me.btnDeactive.BackColor = System.Drawing.Color.SkyBlue
+        Me.btnDeactive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDeactive.Location = New System.Drawing.Point(542, 212)
+        Me.btnDeactive.Name = "btnDeactive"
+        Me.btnDeactive.Size = New System.Drawing.Size(131, 34)
+        Me.btnDeactive.TabIndex = 12
+        Me.btnDeactive.Text = "Deactivate"
+        Me.btnDeactive.UseVisualStyleBackColor = False
+        '
+        'btnPlus
+        '
+        Me.btnPlus.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnPlus.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPlus.Location = New System.Drawing.Point(228, 33)
+        Me.btnPlus.Name = "btnPlus"
+        Me.btnPlus.Size = New System.Drawing.Size(46, 30)
+        Me.btnPlus.TabIndex = 13
+        Me.btnPlus.Text = "+"
+        Me.btnPlus.UseVisualStyleBackColor = False
+        '
         'frmPetOwner
         '
+        Me.AcceptButton = Me.btnAdd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
-        Me.ClientSize = New System.Drawing.Size(292, 220)
+        Me.ClientSize = New System.Drawing.Size(701, 275)
+        Me.Controls.Add(Me.btnPlus)
+        Me.Controls.Add(Me.btnDeactive)
+        Me.Controls.Add(Me.btnActive)
+        Me.Controls.Add(Me.txtID)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.dgOwner)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.txtPhone)
@@ -124,7 +197,9 @@ Partial Class frmPetOwner
         Me.Controls.Add(Me.Label1)
         Me.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Name = "frmPetOwner"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "PetOwner"
+        CType(Me.dgOwner, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -138,4 +213,10 @@ Partial Class frmPetOwner
     Friend WithEvents txtPhone As TextBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnExit As Button
+    Friend WithEvents dgOwner As DataGridView
+    Friend WithEvents Label4 As Label
+    Friend WithEvents txtID As TextBox
+    Friend WithEvents btnActive As Button
+    Friend WithEvents btnDeactive As Button
+    Friend WithEvents btnPlus As Button
 End Class

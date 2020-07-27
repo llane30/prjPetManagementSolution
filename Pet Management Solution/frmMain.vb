@@ -4,6 +4,8 @@
 
 Public Class frmMain
 
+    Public user As UserLogin
+
     Private Sub btnTestConnection_Click(sender As Object, e As EventArgs) Handles btnTestConnection.Click
 
         dbConnection()
@@ -11,9 +13,7 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim form As New frmLogin
-        form.ShowDialog()
-        MsgBox(form.user.LoggedIn)
+        statusUser.Text = user.Type & ": " & user.FirstName & " " & user.LastName
         Dim strQuery As String
         dbConnection()
 
@@ -26,7 +26,7 @@ Public Class frmMain
 
         DisplayRecords(strQuery, dgPets)
 
-        txtID.Text = RecordCount() + 1
+        txtID.Text = RecordCount("tblpet", "petID") + 1
 
         strQuery = "SELECT * FROM tblType"
         LoadToComboBox(strQuery, cboType, "typeID", "typeName")
@@ -39,7 +39,6 @@ Public Class frmMain
         LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName")
 
 
-        'Additional Behaviors
         txtSearch.Text = String.Empty
         btnNew.Enabled = True
         btnSave.Enabled = True
@@ -78,7 +77,7 @@ Public Class frmMain
                                 ", '" + txtNotes.Text + "' ) "
             MsgBox(strQuery)
             SQLManager(strQuery, "Record saved.")
-            txtID.Text = RecordCount() + 1
+            txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
                             "tblOwner.ownerContactNumber, petStatus  " +
@@ -129,7 +128,7 @@ Public Class frmMain
         'Disable a butoon
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
-        txtID.Text = RecordCount() + 1
+        txtID.Text = RecordCount("tblpet", "petID") + 1
         txtName.Text = String.Empty
         cboType.SelectedIndex = 0
         cboBreed.SelectedIndex = 0
@@ -146,7 +145,7 @@ Public Class frmMain
                         ", petNotes='" & txtNotes.Text & "', petStatus='" & cboStatus.Text & "' WHERE petID=" & txtID.Text
             'MsgBox(strQuery)
             SQLManager(strQuery, "Record updated.")
-            txtID.Text = RecordCount() + 1
+            txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petBirthdate, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
                             "tblOwner.ownerContactNumber, petStatus  " +
@@ -168,7 +167,7 @@ Public Class frmMain
             strQuery = "UPDATE tblpet SET petStatus='Inactive' WHERE petID=" & txtID.Text
             'MsgBox(strQuery)
             SQLManager(strQuery, "Record updated.")
-            txtID.Text = RecordCount() + 1
+            txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petBirthdate, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
                             "tblOwner.ownerContactNumber, petStatus  " +
@@ -188,7 +187,7 @@ Public Class frmMain
         Dim frm As frmPetType
         frm = New frmPetType
         frm.ShowDialog()
-        txtID.Text = RecordCount() + 1
+        txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT * FROM tblType"
         LoadToComboBox(strQuery, cboType, "typeID", "typeName")
 
@@ -198,7 +197,7 @@ Public Class frmMain
         Dim frm As frmPetOwner
         frm = New frmPetOwner
         frm.ShowDialog()
-        txtID.Text = RecordCount() + 1
+        txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT * FROM tblOwner"
         LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName")
     End Sub
@@ -209,11 +208,11 @@ Public Class frmMain
         frm.PetType = cboType.Text
         frm.PetTypeID = cboType.SelectedValue
         frm.ShowDialog()
-        txtID.Text = RecordCount() + 1
+        txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT breedID, breedName, typeID FROM tblbreed " +
                     "WHERE typeID =  " + cboType.SelectedValue.ToString
         LoadToComboBox(strQuery, cboBreed, "breedID", "breedName")
-        
+
     End Sub
 
     Private Sub rdoAll_CheckedChanged(sender As Object, e As EventArgs) Handles rdoInactive.CheckedChanged, rdoAll.CheckedChanged, rdoActive.CheckedChanged
@@ -270,5 +269,9 @@ Public Class frmMain
         DisplayRecords(strQuery, dgPets)
     End Sub
 
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim form As New frmAboutUs
+        form.ShowDialog()
 
+    End Sub
 End Class

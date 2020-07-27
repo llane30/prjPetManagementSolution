@@ -57,6 +57,7 @@ Partial Class frmLogin
         Me.txtPass.Location = New System.Drawing.Point(109, 126)
         Me.txtPass.Multiline = True
         Me.txtPass.Name = "txtPass"
+        Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(142, 24)
         Me.txtPass.TabIndex = 3
         '
@@ -86,7 +87,7 @@ Partial Class frmLogin
         '
         Me.btnLogin.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnLogin.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnLogin.Location = New System.Drawing.Point(26, 195)
+        Me.btnLogin.Location = New System.Drawing.Point(26, 174)
         Me.btnLogin.Name = "btnLogin"
         Me.btnLogin.Size = New System.Drawing.Size(106, 38)
         Me.btnLogin.TabIndex = 6
@@ -97,7 +98,7 @@ Partial Class frmLogin
         '
         Me.btnExit.BackColor = System.Drawing.SystemColors.ControlDark
         Me.btnExit.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(145, 195)
+        Me.btnExit.Location = New System.Drawing.Point(148, 174)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(106, 38)
         Me.btnExit.TabIndex = 7

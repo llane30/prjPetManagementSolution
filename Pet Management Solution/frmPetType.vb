@@ -2,7 +2,7 @@
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim strQuery As String
         Try
-            strQuery = "INSERT INTO tbltype (typeName) VALUES ('" & txtPetType.Text & "') "
+            strQuery = "INSERT INTO tbltype (typeName) VALUES ('" & txtType.Text & "') "
             'MsgBox(strQuery)
             SQLManager(strQuery, "Record saved.")
             Me.Close()
@@ -17,4 +17,6 @@
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
         Me.Close()
     End Sub
+
+
 End Class

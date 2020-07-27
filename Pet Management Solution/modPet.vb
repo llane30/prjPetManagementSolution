@@ -53,13 +53,13 @@ Module modPet
         Return GetDataTable
     End Function
 
-    Public Function RecordCount() As Integer
+    Public Function RecordCount(strTable As String, strColumn As String) As Integer
         Dim count As Integer = 0
-        Dim strSQL As String = "SELECT * FROM tblPet ORDER BY petID DESC LIMIT 1"
+        Dim strSQL As String = $"SELECT * FROM {strTable} ORDER BY {strColumn} DESC LIMIT 1"
         Dim dt = GetDataTable(strSQL)
 
         If dt.Rows.Count() > 0 Then
-            count = dt.Rows(0).Item("petID")
+            count = dt.Rows(0).Item(strColumn)
         Else
             count = 0
         End If
