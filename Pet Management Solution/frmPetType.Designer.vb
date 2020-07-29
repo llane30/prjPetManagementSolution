@@ -27,18 +27,19 @@ Partial Class frmPetType
         Me.btnExit = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtID = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgType = New System.Windows.Forms.DataGridView()
         Me.btnActive = New System.Windows.Forms.Button()
         Me.btnDeactive = New System.Windows.Forms.Button()
         Me.txtType = New System.Windows.Forms.TextBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnPlus = New System.Windows.Forms.Button()
+        CType(Me.dgType, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(43, 85)
+        Me.Label1.Location = New System.Drawing.Point(22, 84)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(65, 19)
         Me.Label1.TabIndex = 1
@@ -70,7 +71,7 @@ Partial Class frmPetType
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(43, 47)
+        Me.Label2.Location = New System.Drawing.Point(31, 46)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(27, 19)
         Me.Label2.TabIndex = 4
@@ -78,25 +79,25 @@ Partial Class frmPetType
         '
         'txtID
         '
-        Me.txtID.Location = New System.Drawing.Point(127, 39)
+        Me.txtID.Location = New System.Drawing.Point(95, 38)
         Me.txtID.Multiline = True
         Me.txtID.Name = "txtID"
         Me.txtID.Size = New System.Drawing.Size(150, 27)
         Me.txtID.TabIndex = 5
         '
-        'DataGridView1
+        'dgType
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(300, 12)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(449, 229)
-        Me.DataGridView1.TabIndex = 6
+        Me.dgType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgType.Location = New System.Drawing.Point(300, 12)
+        Me.dgType.Name = "dgType"
+        Me.dgType.Size = New System.Drawing.Size(449, 229)
+        Me.dgType.TabIndex = 6
         '
         'btnActive
         '
         Me.btnActive.BackColor = System.Drawing.Color.MediumOrchid
         Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActive.Location = New System.Drawing.Point(524, 259)
+        Me.btnActive.Location = New System.Drawing.Point(517, 259)
         Me.btnActive.Name = "btnActive"
         Me.btnActive.Size = New System.Drawing.Size(87, 33)
         Me.btnActive.TabIndex = 7
@@ -107,30 +108,40 @@ Partial Class frmPetType
         '
         Me.btnDeactive.BackColor = System.Drawing.Color.DarkOrchid
         Me.btnDeactive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeactive.Location = New System.Drawing.Point(632, 259)
+        Me.btnDeactive.Location = New System.Drawing.Point(610, 259)
         Me.btnDeactive.Name = "btnDeactive"
-        Me.btnDeactive.Size = New System.Drawing.Size(117, 33)
+        Me.btnDeactive.Size = New System.Drawing.Size(143, 33)
         Me.btnDeactive.TabIndex = 8
-        Me.btnDeactive.Text = "Deactive"
+        Me.btnDeactive.Text = "Deactivate"
         Me.btnDeactive.UseVisualStyleBackColor = False
         '
         'txtType
         '
-        Me.txtType.Location = New System.Drawing.Point(127, 83)
+        Me.txtType.Location = New System.Drawing.Point(95, 83)
         Me.txtType.Name = "txtType"
         Me.txtType.Size = New System.Drawing.Size(150, 20)
         Me.txtType.TabIndex = 9
+        '
+        'btnPlus
+        '
+        Me.btnPlus.Location = New System.Drawing.Point(251, 38)
+        Me.btnPlus.Name = "btnPlus"
+        Me.btnPlus.Size = New System.Drawing.Size(37, 27)
+        Me.btnPlus.TabIndex = 10
+        Me.btnPlus.Text = "+"
+        Me.btnPlus.UseVisualStyleBackColor = True
         '
         'frmPetType
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(772, 304)
+        Me.ClientSize = New System.Drawing.Size(765, 301)
+        Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.txtType)
         Me.Controls.Add(Me.btnDeactive)
         Me.Controls.Add(Me.btnActive)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgType)
         Me.Controls.Add(Me.txtID)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnExit)
@@ -139,7 +150,7 @@ Partial Class frmPetType
         Me.Name = "frmPetType"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "PetType"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgType, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -149,8 +160,9 @@ Partial Class frmPetType
     Friend WithEvents btnExit As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents txtID As TextBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgType As DataGridView
     Friend WithEvents btnActive As Button
     Friend WithEvents btnDeactive As Button
     Friend WithEvents txtType As TextBox
+    Friend WithEvents btnPlus As Button
 End Class

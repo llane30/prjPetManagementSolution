@@ -1,4 +1,5 @@
 ﻿Public Class UserLogin
+    Private intID As Integer
     Private strUsername As String
     Private strPassword As String
     Private strFirstname As String
@@ -6,22 +7,34 @@
     Private intType As String
     Private strType As String
     Private boolLogin As Boolean
+    Private strStatus As String
 
     'Constructor
     Public Sub New(strUser As String, strPass As String)
-        Dim strSQL As String = "SELECT * FROM tblUser WHERE userName='" & strUser & "' AND userPassword=md5('" & strPass & "') LIMIT 1"
+        Dim strSQL As String = $"SELECT * FROM tblUser WHERE userName='{strUser}' LIMIT 1"
         Dim dt = GetDataTable(strSQL)
-
+        Dim IsValid As Boolean
         If dt.Rows.Count() > 0 Then
-            strUsername = dt.Rows(0).Item("userName").ToString
-            strFirstname = dt.Rows(0).Item("userFirstname").ToString
-            strLastname = dt.Rows(0).Item("userLastname").ToString
-            intType = CType(dt.Rows(0).Item("userType"), Integer)
-
-            strType = If(intType = 0, "Encoder", "Admin")
-            boolLogin = True
+            With dt.Rows(0)
+                intID = CType(.Item("userID"), Integer)
+                strUsername = .Item("userName").ToString
+                strFirstname = .Item("userFirstname").ToString
+                strLastname = .Item("userLastname").ToString
+                intType = CType(.Item("userType"), Integer)
+                strType = If(intType = 0, "Encoder", "Admin")
+                strStatus = .Item("userStatus").ToString
+            End With
+            strSQL = $"SELECT userPassword=md5('{strPass}') AS IsValid FROM tbluser WHERE userID={intID}"
+            dt = GetDataTable(strSQL)
+            IsValid = CType(dt.Rows(0).Item("IsValid"), Integer) = 1
+            If IsValid AndAlso strStatus = "Active" Then
+                boolLogin = True
+                executeSuccesslog(intID)
+            Else
+                boolLogin = False
+                executeUnsuccesslog(intID)
+            End If
         Else
-
             boolLogin = False
         End If
     End Sub
@@ -56,4 +69,15 @@
         End Get
     End Property
 
+    Public ReadOnly Property IsActive As Boolean
+        Get
+            Return strStatus = "Active"
+        End Get
+    End Property
+
+    Public ReadOnly Property ID As Integer
+        Get
+            Return intID
+        End Get
+    End Property
 End Class

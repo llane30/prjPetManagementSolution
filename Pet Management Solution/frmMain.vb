@@ -4,26 +4,21 @@
 
 Public Class frmMain
 
-    Public user As UserLogin
 
     Private Sub btnTestConnection_Click(sender As Object, e As EventArgs) Handles btnTestConnection.Click
-
         dbConnection()
-
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         statusUser.Text = user.Type & ": " & user.FirstName & " " & user.LastName
         Dim strQuery As String
         dbConnection()
-
         strQuery = "SELECT petID, petName, petBirthdate, petGender, tbltype.typeName, " +
                     "tblbreed.breedName, petNotes, " +
                     "tblOwner.ownerName, tblOwner.ownerAddress, tblOwner.ownerContactNumber, petStatus " +
                     "FROM tblpet INNER JOIN tblbreed ON tblpet.petBreed = tblbreed.breedID " +
                     "INNER JOIN tbltype ON tbltype.typeID = tblbreed.typeID " +
                     "INNER JOIN tblowner ON tblowner.ownerID = tblpet.ownerID ORDER BY petID"
-
         DisplayRecords(strQuery, dgPets)
 
         txtID.Text = RecordCount("tblpet", "petID") + 1
@@ -38,7 +33,6 @@ Public Class frmMain
         strQuery = "SELECT * FROM tblOwner"
         LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName")
 
-
         txtSearch.Text = String.Empty
         btnNew.Enabled = True
         btnSave.Enabled = True
@@ -46,7 +40,6 @@ Public Class frmMain
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
         btnNew.PerformClick()
-
     End Sub
 
     Private Sub cboType_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cboType.SelectionChangeCommitted
@@ -55,11 +48,9 @@ Public Class frmMain
             strQuery = "SELECT breedID, breedName, typeID FROM tblbreed " +
                 "WHERE typeID = " + cboType.SelectedValue.ToString
             LoadToComboBox(strQuery, cboBreed, "breedID", "breedName")
-
         Catch ex As Exception
             MessageBox.Show("Error: CboType SelectedChangeCommitted() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         End Try
     End Sub
 
@@ -75,8 +66,9 @@ Public Class frmMain
                                 ", '" + cboGender.Text + "' " +
                                 ", '" + cboStatus.Text + "' " +
                                 ", '" + txtNotes.Text + "' ) "
-            MsgBox(strQuery)
+            'MsgBox(strQuery)
             SQLManager(strQuery, "Record saved.")
+            executeCreatelog("Main Form", "pet", Val(txtID.Text))
             txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
@@ -100,16 +92,17 @@ Public Class frmMain
         btnSave.Enabled = False
         Dim i As Integer = e.RowIndex
         Try
-            With dgPets
-                txtID.Text = .Item("petID", i).Value
-                txtName.Text = .Item("petName", i).Value
-                txtBirthdate.Text = CDate(.Item("petBirthdate", i).Value).ToString("MM/dd/yyyy")
-                cboGender.Text = .Item("petGender", i).Value
-                cboType.Text = .Item("typeName", i).Value
-                cboBreed.Text = .Item("breedName", i).Value
-                txtNotes.Text = .Item("petNotes", i).Value
-                cboStatus.Text = .Item("petStatus", i).Value
-            End With
+            Dim petUpdate As New PetUpdate(CType(dgPets.Item("petID", i).Value, Integer))
+            txtID.Text = petUpdate.ID
+            txtName.Text = petUpdate.Name
+            txtBirthdate.Text = petUpdate.Birthdate
+            cboGender.Text = petUpdate.Gender
+            cboType.SelectedValue = petUpdate.Type.ID
+
+            cboBreed.SelectedValue = petUpdate.Breed.ID
+            cboOwner.SelectedValue = petUpdate.Owner.ID
+            txtNotes.Text = petUpdate.Notes
+            cboStatus.Text = petUpdate.Status
         Catch ex As Exception
             MessageBox.Show("Error: Datagrid CellClick() " & ex.Message, "Pet DBMS",
                 MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -167,6 +160,7 @@ Public Class frmMain
             strQuery = "UPDATE tblpet SET petStatus='Inactive' WHERE petID=" & txtID.Text
             'MsgBox(strQuery)
             SQLManager(strQuery, "Record updated.")
+            executeDeletelog("Main Form", "pet", Val(txtID.Text))
             txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petBirthdate, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
@@ -174,7 +168,6 @@ Public Class frmMain
                             "FROM tblpet INNER JOIN tblbreed ON tblpet.petBreed = tblbreed.breedID " +
                             "INNER JOIN tbltype ON tbltype.typeID = tblbreed.typeID " +
                             "INNER JOIN tblowner ON tblowner.ownerID = tblpet.ownerID ORDER BY petID "
-
             DisplayRecords(strQuery, dgPets)
         Catch ex As Exception
             MessageBox.Show("Error: Delete() " & ex.Message, "Pet DBMS",
@@ -274,4 +267,19 @@ Public Class frmMain
         form.ShowDialog()
 
     End Sub
+
+    Private Sub UsersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsersToolStripMenuItem.Click
+        Dim form As New frmUserInfo
+        form.ShowDialog()
+    End Sub
+
+    Private Sub frmMain_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        executeLogout(user)
+    End Sub
+
+    Private Sub QuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+
 End Class

@@ -1,6 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 Module modPet
 
+    Public user As UserLogin
+
     'establishes connection to a MySQL Server database
     Private dbConn As MySqlConnection
 
@@ -89,6 +91,59 @@ Module modPet
             MessageBox.Show("Error: SQLManager() " & ex.Message, "Pet DBMS",
                 MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Sub
+
+    Public Sub SQLManager(ByVal strSQL As String)
+        Try
+            dbConn.Open()
+            sqlCommand = New MySqlCommand(strSQL, dbConn)
+            With sqlCommand
+                .CommandType = CommandType.Text
+                .ExecuteNonQuery()
+            End With
+            dbConn.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error: SQLManager() " & ex.Message, "Pet DBMS",
+                MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Public Sub executeUnsuccesslog(intID As Integer)
+        Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime,logType, userID, logModule, logComment) VALUES 
+                                    (now(), 0, {intID}, 'Login Form', 'Invalid username/password') "
+        SQLManager(strQuery)
+    End Sub
+
+    Public Sub executeSuccesslog(intID As Integer)
+        Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime,logType, userID, logModule, logComment) VALUES 
+                                    (now(), 1, {intID}, 'Login Form', 'Sucessful login') "
+        SQLManager(strQuery)
+    End Sub
+
+    Public Sub executeCreatelog(strForm As String, strObject As String, intID As Integer)
+        Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime, logType, userID, logModule, logComment) VALUES 
+                                    (now(), 2, {user.ID}, '{strForm}', 'Create new {strObject} - #{intID}') "
+        SQLManager(strQuery)
+    End Sub
+
+    Public Sub executeUpdatelog()
+
+    End Sub
+
+    Public Sub executeDeletelog(strForm As String, strObject As String, intID As Integer)
+        Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime, logType, userID, logModule, logComment) VALUES 
+                                    (now(), 4, {user.ID}, '{strForm}', 'Deactivated {strObject} - #{intID}') "
+        SQLManager(strQuery)
+    End Sub
+
+    Public Sub executePrintlog()
+
+    End Sub
+
+    Public Sub executeLogout(user As UserLogin)
+        Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime,logType, userID, logModule, logComment) VALUES 
+                                    (now(), 6, {user.ID}, 'Main Form', 'Logout successfully') "
+        SQLManager(strQuery)
     End Sub
 
 End Module

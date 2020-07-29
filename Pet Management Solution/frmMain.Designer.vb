@@ -144,7 +144,7 @@ Partial Class frmMain
         'btnClose
         '
         Me.btnClose.BackColor = System.Drawing.Color.BurlyWood
-        Me.btnClose.Location = New System.Drawing.Point(545, 403)
+        Me.btnClose.Location = New System.Drawing.Point(962, 403)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 25)
         Me.btnClose.TabIndex = 9
@@ -154,7 +154,7 @@ Partial Class frmMain
         'btnPrint
         '
         Me.btnPrint.BackColor = System.Drawing.Color.DarkOrange
-        Me.btnPrint.Location = New System.Drawing.Point(464, 403)
+        Me.btnPrint.Location = New System.Drawing.Point(881, 403)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(75, 25)
         Me.btnPrint.TabIndex = 8
@@ -426,7 +426,7 @@ Partial Class frmMain
         'btnTestConnection
         '
         Me.btnTestConnection.BackColor = System.Drawing.Color.Chocolate
-        Me.btnTestConnection.Location = New System.Drawing.Point(383, 403)
+        Me.btnTestConnection.Location = New System.Drawing.Point(786, 403)
         Me.btnTestConnection.Name = "btnTestConnection"
         Me.btnTestConnection.Size = New System.Drawing.Size(75, 25)
         Me.btnTestConnection.TabIndex = 7
@@ -436,25 +436,27 @@ Partial Class frmMain
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusUser, Me.statusDeveloped})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 465)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 462)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1059, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1059, 25)
         Me.StatusStrip1.TabIndex = 10
         Me.StatusStrip1.Text = "Llanne Enumerables"
         '
         'statusUser
         '
+        Me.statusUser.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(506, 17)
+        Me.statusUser.Size = New System.Drawing.Size(522, 20)
         Me.statusUser.Spring = True
         Me.statusUser.Text = "User: LLane"
         Me.statusUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'statusDeveloped
         '
+        Me.statusDeveloped.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statusDeveloped.Name = "statusDeveloped"
         Me.statusDeveloped.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.statusDeveloped.Size = New System.Drawing.Size(506, 17)
+        Me.statusDeveloped.Size = New System.Drawing.Size(522, 20)
         Me.statusDeveloped.Spring = True
         Me.statusDeveloped.Text = "Developed by: Llanne Enumerables (c) 2020"
         Me.statusDeveloped.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -478,7 +480,7 @@ Partial Class frmMain
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "&About"
         '
         'QuitToolStripMenuItem
@@ -528,7 +530,7 @@ Partial Class frmMain
         'UsersToolStripMenuItem
         '
         Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
         Me.UsersToolStripMenuItem.Text = "Users"
         '
         'frmMain

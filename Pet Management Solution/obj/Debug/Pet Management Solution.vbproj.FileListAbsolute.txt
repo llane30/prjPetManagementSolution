@@ -94,3 +94,4 @@ D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Sol
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.pdb
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.pdb
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.xml
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmUserInfo.resources

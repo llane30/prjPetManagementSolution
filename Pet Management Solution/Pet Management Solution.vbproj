@@ -113,6 +113,12 @@
     <Compile Include="frmPetType.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmUserInfo.Designer.vb">
+      <DependentUpon>frmUserInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modPet.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -129,6 +135,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="petBreed.vb" />
+    <Compile Include="petOwner.vb" />
+    <Compile Include="petType.vb" />
+    <Compile Include="PetUpdate.vb" />
     <Compile Include="SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </Compile>
@@ -155,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPetType.resx">
       <DependentUpon>frmPetType.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserInfo.resx">
+      <DependentUpon>frmUserInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

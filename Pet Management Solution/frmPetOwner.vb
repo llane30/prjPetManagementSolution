@@ -3,20 +3,18 @@
         Dim strQuery As String
         If btnAdd.Text.Contains("Add") Then
             Try
-                strQuery = $"INSERT INTO tblowner VALUES ({txtID.Text}, '{txtName.Text}', '{txtAddress.Text}', '{txtPhone.Text}', 'Active') "
-                'MsgBox(strQuery)
+                strQuery = $"INSERT INTO tblowner VALUES ({txtID.Text}, '{txtName.Text}', '{txtAddress.Text}', '{txtPhone.Text}', 'Active')"
                 SQLManager(strQuery, "Record saved.")
+                executeCreatelog("Pet Owner Form", "pet owner", Val(txtID.Text))
             Catch ex As Exception
                 MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
-
             End Try
         Else
             Try
                 strQuery = $"UPDATE tblowner SET ownerName='{txtName.Text}', ownerAddress='{txtAddress.Text}', ownerContactNumber='{txtPhone.Text}' WHERE ownerID ={txtID.Text} "
                 'MsgBox(strQuery)
                 SQLManager(strQuery, "Record updated.")
-
             Catch ex As Exception
                 MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -55,7 +53,6 @@
         Catch ex As Exception
             MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                 MessageBoxButtons.OK, MessageBoxIcon.Error)
-
         End Try
     End Sub
 
@@ -65,6 +62,7 @@
             strQuery = $"UPDATE tblowner SET ownerStatus='Inactive'  WHERE ownerID ={txtID.Text} "
             'MsgBox(strQuery)
             SQLManager(strQuery, "Record updated.")
+            executeDeletelog("Pet Owner Form", "pet owner", Val(txtID.Text))
             btnPlus.PerformClick()
         Catch ex As Exception
             MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
