@@ -57,7 +57,6 @@ Partial Class frmMain
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnTestConnection = New System.Windows.Forms.Button()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statusUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusDeveloped = New System.Windows.Forms.ToolStripStatusLabel()
@@ -66,12 +65,12 @@ Partial Class frmMain
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PetsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BreedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.OwnerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.strType = New System.Windows.Forms.ToolStripMenuItem()
+        Me.strOwner = New System.Windows.Forms.ToolStripMenuItem()
+        Me.strBreed = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MenuSettings = New System.Windows.Forms.ToolStripMenuItem()
         Me.UsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AuditLogsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgPets, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -128,7 +127,7 @@ Partial Class frmMain
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(11, 17)
+        Me.Label10.Location = New System.Drawing.Point(21, 21)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(37, 14)
         Me.Label10.TabIndex = 0
@@ -136,82 +135,101 @@ Partial Class frmMain
         '
         'txtSearch
         '
-        Me.txtSearch.Location = New System.Drawing.Point(58, 14)
+        Me.txtSearch.Location = New System.Drawing.Point(77, 17)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(100, 21)
         Me.txtSearch.TabIndex = 1
         '
         'btnClose
         '
+        Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnClose.BackColor = System.Drawing.Color.BurlyWood
-        Me.btnClose.Location = New System.Drawing.Point(962, 403)
+        Me.btnClose.Font = New System.Drawing.Font("Maiandra GD", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClose.Location = New System.Drawing.Point(962, 27)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(75, 25)
+        Me.btnClose.Size = New System.Drawing.Size(75, 30)
         Me.btnClose.TabIndex = 9
-        Me.btnClose.Text = "Close"
+        Me.btnClose.Text = "Logout"
         Me.btnClose.UseVisualStyleBackColor = False
         '
         'btnPrint
         '
+        Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnPrint.BackColor = System.Drawing.Color.DarkOrange
-        Me.btnPrint.Location = New System.Drawing.Point(881, 403)
+        Me.btnPrint.Font = New System.Drawing.Font("Showcard Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPrint.Location = New System.Drawing.Point(962, 423)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(75, 25)
+        Me.btnPrint.Size = New System.Drawing.Size(75, 36)
         Me.btnPrint.TabIndex = 8
         Me.btnPrint.Text = "Print"
         Me.btnPrint.UseVisualStyleBackColor = False
         '
         'btnDelete
         '
+        Me.btnDelete.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnDelete.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.btnDelete.Location = New System.Drawing.Point(255, 403)
+        Me.btnDelete.Font = New System.Drawing.Font("Showcard Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDelete.Location = New System.Drawing.Point(286, 423)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 25)
+        Me.btnDelete.Size = New System.Drawing.Size(75, 36)
         Me.btnDelete.TabIndex = 6
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = False
         '
         'btnUpdate
         '
+        Me.btnUpdate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnUpdate.BackColor = System.Drawing.Color.Azure
-        Me.btnUpdate.Location = New System.Drawing.Point(174, 403)
+        Me.btnUpdate.Font = New System.Drawing.Font("Showcard Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Location = New System.Drawing.Point(195, 423)
         Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(75, 25)
+        Me.btnUpdate.Size = New System.Drawing.Size(75, 36)
         Me.btnUpdate.TabIndex = 5
         Me.btnUpdate.Text = "Update"
         Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'btnNew
         '
+        Me.btnNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnNew.BackColor = System.Drawing.Color.Moccasin
-        Me.btnNew.Location = New System.Drawing.Point(12, 403)
+        Me.btnNew.Font = New System.Drawing.Font("Showcard Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNew.Location = New System.Drawing.Point(12, 423)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 25)
+        Me.btnNew.Size = New System.Drawing.Size(75, 36)
         Me.btnNew.TabIndex = 3
         Me.btnNew.Text = "New"
         Me.btnNew.UseVisualStyleBackColor = False
         '
         'btnSave
         '
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSave.BackColor = System.Drawing.SystemColors.HighlightText
-        Me.btnSave.Location = New System.Drawing.Point(93, 403)
+        Me.btnSave.Font = New System.Drawing.Font("Showcard Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSave.Location = New System.Drawing.Point(106, 423)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 25)
+        Me.btnSave.Size = New System.Drawing.Size(75, 36)
         Me.btnSave.TabIndex = 4
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = False
         '
         'dgPets
         '
+        Me.dgPets.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgPets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgPets.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.dgPets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgPets.Location = New System.Drawing.Point(255, 63)
         Me.dgPets.Name = "dgPets"
-        Me.dgPets.Size = New System.Drawing.Size(782, 317)
+        Me.dgPets.Size = New System.Drawing.Size(782, 354)
         Me.dgPets.TabIndex = 2
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cboStatus)
         Me.GroupBox1.Controls.Add(Me.txtBirthdate)
         Me.GroupBox1.Controls.Add(Me.txtNotes)
@@ -233,9 +251,9 @@ Partial Class frmMain
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtID)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 13)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 32)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(214, 373)
+        Me.GroupBox1.Size = New System.Drawing.Size(214, 385)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Pet Information Form"
@@ -260,7 +278,7 @@ Partial Class frmMain
         '
         'txtNotes
         '
-        Me.txtNotes.Location = New System.Drawing.Point(69, 227)
+        Me.txtNotes.Location = New System.Drawing.Point(69, 226)
         Me.txtNotes.Multiline = True
         Me.txtNotes.Name = "txtNotes"
         Me.txtNotes.Size = New System.Drawing.Size(100, 111)
@@ -268,30 +286,33 @@ Partial Class frmMain
         '
         'btnAddOwner
         '
+        Me.btnAddOwner.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnAddOwner.Location = New System.Drawing.Point(175, 196)
         Me.btnAddOwner.Name = "btnAddOwner"
         Me.btnAddOwner.Size = New System.Drawing.Size(28, 25)
         Me.btnAddOwner.TabIndex = 20
         Me.btnAddOwner.Text = "+"
-        Me.btnAddOwner.UseVisualStyleBackColor = True
+        Me.btnAddOwner.UseVisualStyleBackColor = False
         '
         'btnAddBreed
         '
+        Me.btnAddBreed.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnAddBreed.Location = New System.Drawing.Point(175, 169)
         Me.btnAddBreed.Name = "btnAddBreed"
         Me.btnAddBreed.Size = New System.Drawing.Size(28, 25)
         Me.btnAddBreed.TabIndex = 19
         Me.btnAddBreed.Text = "+"
-        Me.btnAddBreed.UseVisualStyleBackColor = True
+        Me.btnAddBreed.UseVisualStyleBackColor = False
         '
         'btnAddType
         '
+        Me.btnAddType.BackColor = System.Drawing.SystemColors.MenuHighlight
         Me.btnAddType.Location = New System.Drawing.Point(175, 138)
         Me.btnAddType.Name = "btnAddType"
         Me.btnAddType.Size = New System.Drawing.Size(28, 25)
         Me.btnAddType.TabIndex = 18
         Me.btnAddType.Text = "+"
-        Me.btnAddType.UseVisualStyleBackColor = True
+        Me.btnAddType.UseVisualStyleBackColor = False
         '
         'Label9
         '
@@ -407,6 +428,8 @@ Partial Class frmMain
         '
         'txtID
         '
+        Me.txtID.BackColor = System.Drawing.SystemColors.ScrollBar
+        Me.txtID.Enabled = False
         Me.txtID.ForeColor = System.Drawing.Color.Black
         Me.txtID.ImeMode = System.Windows.Forms.ImeMode.Disable
         Me.txtID.Location = New System.Drawing.Point(69, 28)
@@ -423,22 +446,12 @@ Partial Class frmMain
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "ID"
         '
-        'btnTestConnection
-        '
-        Me.btnTestConnection.BackColor = System.Drawing.Color.Chocolate
-        Me.btnTestConnection.Location = New System.Drawing.Point(786, 403)
-        Me.btnTestConnection.Name = "btnTestConnection"
-        Me.btnTestConnection.Size = New System.Drawing.Size(75, 25)
-        Me.btnTestConnection.TabIndex = 7
-        Me.btnTestConnection.Text = "Test Conn"
-        Me.btnTestConnection.UseVisualStyleBackColor = False
-        '
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusUser, Me.statusDeveloped})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 462)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1059, 25)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1051, 25)
         Me.StatusStrip1.TabIndex = 10
         Me.StatusStrip1.Text = "Llanne Enumerables"
         '
@@ -446,7 +459,7 @@ Partial Class frmMain
         '
         Me.statusUser.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statusUser.Name = "statusUser"
-        Me.statusUser.Size = New System.Drawing.Size(522, 20)
+        Me.statusUser.Size = New System.Drawing.Size(518, 20)
         Me.statusUser.Spring = True
         Me.statusUser.Text = "User: LLane"
         Me.statusUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -456,22 +469,23 @@ Partial Class frmMain
         Me.statusDeveloped.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statusDeveloped.Name = "statusDeveloped"
         Me.statusDeveloped.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.statusDeveloped.Size = New System.Drawing.Size(522, 20)
+        Me.statusDeveloped.Size = New System.Drawing.Size(518, 20)
         Me.statusDeveloped.Spring = True
         Me.statusDeveloped.Text = "Developed by: Llanne Enumerables (c) 2020"
         Me.statusDeveloped.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.SettingsToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ToolStripMenuItem2, Me.MenuSettings})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1059, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1051, 24)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'ToolStripMenuItem1
         '
+        Me.ToolStripMenuItem1.BackColor = System.Drawing.Color.LightCoral
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.QuitToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(43, 20)
@@ -491,57 +505,59 @@ Partial Class frmMain
         '
         'ToolStripMenuItem2
         '
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PetsToolStripMenuItem, Me.TypeToolStripMenuItem, Me.BreedToolStripMenuItem, Me.OwnerToolStripMenuItem})
+        Me.ToolStripMenuItem2.BackColor = System.Drawing.Color.Orange
+        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.strType, Me.strOwner, Me.strBreed})
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(76, 20)
         Me.ToolStripMenuItem2.Text = "Master File"
         '
-        'PetsToolStripMenuItem
+        'strType
         '
-        Me.PetsToolStripMenuItem.Name = "PetsToolStripMenuItem"
-        Me.PetsToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.PetsToolStripMenuItem.Text = "Pets"
+        Me.strType.Name = "strType"
+        Me.strType.Size = New System.Drawing.Size(109, 22)
+        Me.strType.Text = "Type"
         '
-        'TypeToolStripMenuItem
+        'strOwner
         '
-        Me.TypeToolStripMenuItem.Name = "TypeToolStripMenuItem"
-        Me.TypeToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.TypeToolStripMenuItem.Text = "Type"
+        Me.strOwner.Name = "strOwner"
+        Me.strOwner.Size = New System.Drawing.Size(109, 22)
+        Me.strOwner.Text = "Owner"
         '
-        'BreedToolStripMenuItem
+        'strBreed
         '
-        Me.BreedToolStripMenuItem.Name = "BreedToolStripMenuItem"
-        Me.BreedToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.BreedToolStripMenuItem.Text = "Breed"
+        Me.strBreed.Name = "strBreed"
+        Me.strBreed.Size = New System.Drawing.Size(109, 22)
+        Me.strBreed.Text = "Breed"
         '
-        'OwnerToolStripMenuItem
+        'MenuSettings
         '
-        Me.OwnerToolStripMenuItem.Name = "OwnerToolStripMenuItem"
-        Me.OwnerToolStripMenuItem.Size = New System.Drawing.Size(109, 22)
-        Me.OwnerToolStripMenuItem.Text = "Owner"
-        '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem})
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
+        Me.MenuSettings.BackColor = System.Drawing.Color.LimeGreen
+        Me.MenuSettings.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.UsersToolStripMenuItem, Me.AuditLogsToolStripMenuItem})
+        Me.MenuSettings.Name = "MenuSettings"
+        Me.MenuSettings.Size = New System.Drawing.Size(61, 20)
+        Me.MenuSettings.Text = "Settings"
         '
         'UsersToolStripMenuItem
         '
         Me.UsersToolStripMenuItem.Name = "UsersToolStripMenuItem"
-        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(102, 22)
+        Me.UsersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UsersToolStripMenuItem.Text = "Users"
+        '
+        'AuditLogsToolStripMenuItem
+        '
+        Me.AuditLogsToolStripMenuItem.Name = "AuditLogsToolStripMenuItem"
+        Me.AuditLogsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AuditLogsToolStripMenuItem.Text = "Audit Logs"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ButtonShadow
-        Me.ClientSize = New System.Drawing.Size(1059, 487)
+        Me.ClientSize = New System.Drawing.Size(1051, 487)
+        Me.ControlBox = False
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.btnTestConnection)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.btnPrint)
@@ -608,7 +624,6 @@ Partial Class frmMain
     Friend WithEvents txtID As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents cboStatus As ComboBox
-    Friend WithEvents btnTestConnection As Button
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents statusDeveloped As ToolStripStatusLabel
     Friend WithEvents MenuStrip1 As MenuStrip
@@ -616,11 +631,11 @@ Partial Class frmMain
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents QuitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents PetsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents TypeToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BreedToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents OwnerToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents strType As ToolStripMenuItem
+    Friend WithEvents strBreed As ToolStripMenuItem
+    Friend WithEvents strOwner As ToolStripMenuItem
+    Friend WithEvents MenuSettings As ToolStripMenuItem
     Friend WithEvents statusUser As ToolStripStatusLabel
     Friend WithEvents UsersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AuditLogsToolStripMenuItem As ToolStripMenuItem
 End Class

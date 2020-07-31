@@ -10,6 +10,7 @@
     Private petNotes As String
     Private petOwner As petOwner
     Private petBreed As petBreed
+    Private strAuditlog As String
 
     Public Sub New(intID As Integer)
         Dim dt As DataTable = GetDataTable($"SELECT * FROM tblpet WHERE petID = {intID}")
@@ -27,6 +28,7 @@
             'MsgBox($"{ownerID}, {petName}, {petBirthdate}, {petStatus}, {petBreed}, {petNotes}")
             petOwner = New petOwner(ownerID)
             petBreed = New petBreed(breedID)
+            strAuditlog = String.Empty
         End If
     End Sub
 
@@ -36,16 +38,27 @@
         End Get
     End Property
 
-    Public ReadOnly Property Owner As petOwner
+    Public Property Owner As petOwner
         Get
             Return petOwner
         End Get
+        Set(value As petOwner)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet owner", "pet", petID, petOwner.Name, value.Name) Then
+                petOwner = value
+            End If
+        End Set
     End Property
 
-    Public ReadOnly Property Breed As petBreed
+    Public Property Breed As petBreed
         Get
             Return petBreed
         End Get
+        Set(value As petBreed)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet breed", "pet", petID, petBreed.Name, value.Name) Then
+                executeUpdatelog(strAuditlog, "Main Form", "pet type", "pet", petID, petBreed.Type.Name, value.Type.Name)
+                petBreed = value
+            End If
+        End Set
     End Property
 
     Public ReadOnly Property Type As petType
@@ -54,33 +67,65 @@
         End Get
     End Property
 
-    Public ReadOnly Property Name As String
+    Public Property Name As String
         Get
             Return petName
         End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet name", "pet", petID, petName, value) Then
+                petName = value
+            End If
+        End Set
     End Property
 
-    Public ReadOnly Property Birthdate As String
+    Public Property Birthdate As String
         Get
-            Return petBirthdate
+            Return CDate(petBirthdate).ToString("dd/MM/yyyy")
         End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet birthdate", "pet", petID, petBirthdate, value) Then
+                petBirthdate = value
+            End If
+        End Set
     End Property
 
-    Public ReadOnly Property Gender As String
+    Public Property Gender As String
         Get
             Return petGender
         End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet gender", "pet", petID, petGender, value) Then
+                petGender = value
+            End If
+        End Set
     End Property
 
-    Public ReadOnly Property Status As String
+    Public Property Status As String
         Get
             Return petStatus
         End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet status", "pet", petID, petStatus, value) Then
+                petStatus = value
+            End If
+        End Set
     End Property
 
-    Public ReadOnly Property Notes As String
+    Public Property Notes As String
         Get
             Return petNotes
         End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Main Form", "pet notes", "pet", petID, petNotes, value) Then
+                petNotes = value
+            End If
+        End Set
     End Property
+
+    Public ReadOnly Property Auditlog As String
+        Get
+            Return strAuditlog
+        End Get
+    End Property
+
 End Class

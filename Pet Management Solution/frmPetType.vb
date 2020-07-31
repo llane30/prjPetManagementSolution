@@ -1,4 +1,5 @@
 ﻿Public Class frmPetType
+    Private type As petType
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim strQuery As String
         If btnAdd.Text.Contains("Add") Then
@@ -12,10 +13,13 @@
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
+            type.Name = txtType.Text
             Try
-                strQuery = $"UPDATE tbltype SET  typeName='{txtType.Text}' WHERE typeID ={txtID.Text} "
-                'MsgBox(strQuery)
-                SQLManager(strQuery, "Record updated.")
+                strQuery = $"UPDATE tbltype SET  typeName='{type.Name}' WHERE typeID ={type.ID} "
+                If SQLManager(strQuery) Then
+                    SQLManager(type.Auditlog)
+                    MsgBox("Record updated.")
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -44,10 +48,14 @@
     Private Sub dgType_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgType.CellClick
         btnAdd.Text = "Update"
         Dim i As Integer = e.RowIndex
-        With dgType
-            txtID.Text = .Item("typeID", i).Value
-            txtType.Text = .Item("typeName", i).Value
-        End With
+        Try
+            With dgType
+                type = New petType(CType(.Item("typeID", i).Value, Integer))
+                txtID.Text = type.ID
+                txtType.Text = type.Name
+            End With
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub btnActive_Click(sender As Object, e As EventArgs) Handles btnActive.Click

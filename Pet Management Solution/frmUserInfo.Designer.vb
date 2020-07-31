@@ -52,6 +52,7 @@ Partial Class frmUserInfo
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.SystemColors.Info
         Me.GroupBox1.Controls.Add(Me.cboType)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.btnPlus)
@@ -76,7 +77,7 @@ Partial Class frmUserInfo
         Me.GroupBox1.Size = New System.Drawing.Size(301, 371)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "User Information"
+        Me.GroupBox1.Text = "User Form"
         '
         'cboType
         '
@@ -99,12 +100,13 @@ Partial Class frmUserInfo
         '
         'btnPlus
         '
-        Me.btnPlus.Location = New System.Drawing.Point(261, 37)
+        Me.btnPlus.BackColor = System.Drawing.Color.Pink
+        Me.btnPlus.Location = New System.Drawing.Point(261, 34)
         Me.btnPlus.Name = "btnPlus"
         Me.btnPlus.Size = New System.Drawing.Size(34, 33)
         Me.btnPlus.TabIndex = 16
         Me.btnPlus.Text = "+"
-        Me.btnPlus.UseVisualStyleBackColor = True
+        Me.btnPlus.UseVisualStyleBackColor = False
         '
         'txtConfirmPass
         '
@@ -220,6 +222,7 @@ Partial Class frmUserInfo
         '
         'txtID
         '
+        Me.txtID.Enabled = False
         Me.txtID.Location = New System.Drawing.Point(111, 37)
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
@@ -237,53 +240,66 @@ Partial Class frmUserInfo
         '
         'btnExit
         '
-        Me.btnExit.Location = New System.Drawing.Point(171, 378)
+        Me.btnExit.BackColor = System.Drawing.Color.Crimson
+        Me.btnExit.Font = New System.Drawing.Font("Showcard Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExit.Location = New System.Drawing.Point(789, 377)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(87, 33)
         Me.btnExit.TabIndex = 15
         Me.btnExit.Text = "Exit"
-        Me.btnExit.UseVisualStyleBackColor = True
+        Me.btnExit.UseVisualStyleBackColor = False
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(68, 378)
+        Me.btnAdd.BackColor = System.Drawing.Color.DodgerBlue
+        Me.btnAdd.Font = New System.Drawing.Font("Showcard Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAdd.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.btnAdd.Location = New System.Drawing.Point(114, 378)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(87, 33)
         Me.btnAdd.TabIndex = 1
         Me.btnAdd.Text = "Add"
-        Me.btnAdd.UseVisualStyleBackColor = True
+        Me.btnAdd.UseVisualStyleBackColor = False
         '
         'dgUser
         '
+        Me.dgUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgUser.BackgroundColor = System.Drawing.SystemColors.ScrollBar
         Me.dgUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgUser.Location = New System.Drawing.Point(310, 12)
+        Me.dgUser.Location = New System.Drawing.Point(310, 1)
         Me.dgUser.Name = "dgUser"
-        Me.dgUser.Size = New System.Drawing.Size(552, 315)
+        Me.dgUser.Size = New System.Drawing.Size(566, 370)
         Me.dgUser.TabIndex = 17
         '
         'btnActive
         '
-        Me.btnActive.Location = New System.Drawing.Point(671, 339)
+        Me.btnActive.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnActive.Location = New System.Drawing.Point(581, 378)
         Me.btnActive.Name = "btnActive"
         Me.btnActive.Size = New System.Drawing.Size(87, 33)
         Me.btnActive.TabIndex = 18
         Me.btnActive.Text = "Active"
-        Me.btnActive.UseVisualStyleBackColor = True
+        Me.btnActive.UseVisualStyleBackColor = False
         '
         'btnDeactivate
         '
-        Me.btnDeactivate.Location = New System.Drawing.Point(775, 339)
+        Me.btnDeactivate.BackColor = System.Drawing.Color.LightCoral
+        Me.btnDeactivate.Font = New System.Drawing.Font("Showcard Gothic", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnDeactivate.Location = New System.Drawing.Point(674, 378)
         Me.btnDeactivate.Name = "btnDeactivate"
-        Me.btnDeactivate.Size = New System.Drawing.Size(87, 33)
+        Me.btnDeactivate.Size = New System.Drawing.Size(109, 33)
         Me.btnDeactivate.TabIndex = 20
         Me.btnDeactivate.Text = "Deactivate "
-        Me.btnDeactivate.UseVisualStyleBackColor = True
+        Me.btnDeactivate.UseVisualStyleBackColor = False
         '
         'frmUserInfo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(891, 422)
+        Me.BackColor = System.Drawing.SystemColors.ActiveBorder
+        Me.ClientSize = New System.Drawing.Size(879, 418)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnDeactivate)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnActive)

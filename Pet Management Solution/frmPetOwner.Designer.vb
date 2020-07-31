@@ -97,7 +97,7 @@ Partial Class frmPetOwner
         '
         Me.btnAdd.BackColor = System.Drawing.Color.SkyBlue
         Me.btnAdd.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(32, 199)
+        Me.btnAdd.Location = New System.Drawing.Point(116, 172)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(85, 34)
         Me.btnAdd.TabIndex = 6
@@ -108,7 +108,7 @@ Partial Class frmPetOwner
         '
         Me.btnExit.BackColor = System.Drawing.Color.Blue
         Me.btnExit.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(137, 199)
+        Me.btnExit.Location = New System.Drawing.Point(588, 212)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(85, 34)
         Me.btnExit.TabIndex = 7
@@ -117,6 +117,7 @@ Partial Class frmPetOwner
         '
         'dgOwner
         '
+        Me.dgOwner.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgOwner.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgOwner.Location = New System.Drawing.Point(275, 12)
         Me.dgOwner.Name = "dgOwner"
@@ -127,7 +128,7 @@ Partial Class frmPetOwner
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Poor Richard", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(44, 39)
+        Me.Label4.Location = New System.Drawing.Point(42, 42)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(27, 19)
         Me.Label4.TabIndex = 9
@@ -135,6 +136,7 @@ Partial Class frmPetOwner
         '
         'txtID
         '
+        Me.txtID.Enabled = False
         Me.txtID.Location = New System.Drawing.Point(96, 40)
         Me.txtID.Multiline = True
         Me.txtID.Name = "txtID"
@@ -145,7 +147,7 @@ Partial Class frmPetOwner
         '
         Me.btnActive.BackColor = System.Drawing.Color.SkyBlue
         Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActive.Location = New System.Drawing.Point(417, 212)
+        Me.btnActive.Location = New System.Drawing.Point(304, 212)
         Me.btnActive.Name = "btnActive"
         Me.btnActive.Size = New System.Drawing.Size(119, 34)
         Me.btnActive.TabIndex = 11
@@ -156,7 +158,7 @@ Partial Class frmPetOwner
         '
         Me.btnDeactive.BackColor = System.Drawing.Color.SkyBlue
         Me.btnDeactive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeactive.Location = New System.Drawing.Point(542, 212)
+        Me.btnDeactive.Location = New System.Drawing.Point(441, 212)
         Me.btnDeactive.Name = "btnDeactive"
         Me.btnDeactive.Size = New System.Drawing.Size(131, 34)
         Me.btnDeactive.TabIndex = 12
@@ -180,7 +182,8 @@ Partial Class frmPetOwner
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
-        Me.ClientSize = New System.Drawing.Size(701, 275)
+        Me.ClientSize = New System.Drawing.Size(689, 268)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.btnDeactive)
         Me.Controls.Add(Me.btnActive)

@@ -1,4 +1,5 @@
 ﻿Public Class frmUserInfo
+    Private account As UserLogin
     Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
         txtID.Text = RecordCount("tbluser", "userID") + 1
         btnAdd.Text = "Add"
@@ -15,7 +16,6 @@
 
     Private Sub frmUserInfo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         btnPlus.PerformClick()
-
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
@@ -36,13 +36,22 @@
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Else
+            account.FirstName = txtfname.Text
+            account.LastName = txtLname.Text
+            account.ContactNumber = txtContact.Text
+            account.Username = txtUsername.Text
+            account.Password = txtPass.Text
+            account.Type = cboType.SelectedIndex
             Try
                 If txtPass.Text = String.Empty AndAlso txtConfirmPass.Text = String.Empty Then
-                    strQuery = $"UPDATE tbluser SET  userFirstname='{txtfname.Text}', userLastname='{txtLname.Text}', userContactNum='{txtContact.Text}', userName='{txtUsername.Text}', userType='{cboType.SelectedIndex}' WHERE userID ={txtID.Text} "
+                    strQuery = $"UPDATE tbluser SET  userFirstname='{account.FirstName}', userLastname='{account.LastName}', userContactNum='{account.ContactNumber}', userName='{account.Username}', userType='{account.Type}' WHERE userID ={account.ID} "
                 ElseIf txtPass.Text = txtConfirmPass.Text Then
-                    strQuery = $"UPDATE tbluser SET  userFirstname='{txtfname.Text}', userLastname='{txtLname.Text}', userContactNum='{txtContact.Text}', userName='{txtUsername.Text}', userPassword=md5('{txtPass.Text}'),  userType='{cboType.SelectedIndex}' WHERE userID ={txtID.Text} "
+                    strQuery = $"UPDATE tbluser SET  userFirstname='{account.FirstName}', userLastname='{account.LastName}', userContactNum='{account.ContactNumber}', userName='{account.Username}', userPassword=md5('{txtPass.Text}'),  userType='{account.Type}' WHERE userID ={account.ID} "
+                    If SQLManager(strQuery) Then
+                        SQLManager(account.Auditlog)
+                        MsgBox("Record updated.")
+                    End If
                 End If
-                SQLManager(strQuery, "Record updated.")
             Catch ex As Exception
                 MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -79,14 +88,18 @@
     Private Sub dgUser_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgUser.CellClick
         btnAdd.Text = "Update"
         Dim i As Integer = e.RowIndex
-        With dgUser
-            txtID.Text = .Item("userID", i).Value
-            txtfname.Text = .Item("userFirstname", i).Value
-            txtLname.Text = .Item("userLastname", i).Value
-            txtContact.Text = .Item("userContactNum", i).Value
-            txtUsername.Text = .Item("userName", i).Value
-            cboType.SelectedIndex = .Item("userType", i).Value
-        End With
+        Try
+            With dgUser
+                account = New UserLogin(CType(.Item("userID", i).Value, Integer))
+                txtID.Text = account.ID
+                txtfname.Text = account.FirstName
+                txtLname.Text = account.LastName
+                txtContact.Text = account.ContactNumber
+                txtUsername.Text = account.Username
+                cboType.SelectedIndex = account.Type
+            End With
+        Catch ex As Exception
+        End Try
     End Sub
 
     Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click

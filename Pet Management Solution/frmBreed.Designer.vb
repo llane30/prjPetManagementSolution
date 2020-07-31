@@ -59,10 +59,10 @@ Partial Class frmBreed
         '
         'txtBreed
         '
-        Me.txtBreed.Location = New System.Drawing.Point(93, 112)
+        Me.txtBreed.Location = New System.Drawing.Point(90, 111)
         Me.txtBreed.Multiline = True
         Me.txtBreed.Name = "txtBreed"
-        Me.txtBreed.Size = New System.Drawing.Size(118, 20)
+        Me.txtBreed.Size = New System.Drawing.Size(118, 27)
         Me.txtBreed.TabIndex = 3
         '
         'btnAdd
@@ -80,7 +80,7 @@ Partial Class frmBreed
         '
         Me.btnExit.BackColor = System.Drawing.Color.Blue
         Me.btnExit.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(147, 200)
+        Me.btnExit.Location = New System.Drawing.Point(603, 212)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(85, 35)
         Me.btnExit.TabIndex = 5
@@ -100,26 +100,28 @@ Partial Class frmBreed
         'txtID
         '
         Me.txtID.BackColor = System.Drawing.SystemColors.ActiveBorder
-        Me.txtID.Location = New System.Drawing.Point(93, 37)
+        Me.txtID.Enabled = False
+        Me.txtID.Location = New System.Drawing.Point(93, 29)
         Me.txtID.Multiline = True
         Me.txtID.Name = "txtID"
         Me.txtID.ReadOnly = True
-        Me.txtID.Size = New System.Drawing.Size(118, 20)
+        Me.txtID.Size = New System.Drawing.Size(118, 28)
         Me.txtID.TabIndex = 7
         '
         'dgBreed
         '
+        Me.dgBreed.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgBreed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgBreed.Location = New System.Drawing.Point(264, 12)
         Me.dgBreed.Name = "dgBreed"
-        Me.dgBreed.Size = New System.Drawing.Size(415, 191)
+        Me.dgBreed.Size = New System.Drawing.Size(435, 191)
         Me.dgBreed.TabIndex = 8
         '
         'btnActive
         '
         Me.btnActive.BackColor = System.Drawing.Color.DarkOrchid
         Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActive.Location = New System.Drawing.Point(450, 209)
+        Me.btnActive.Location = New System.Drawing.Point(380, 212)
         Me.btnActive.Name = "btnActive"
         Me.btnActive.Size = New System.Drawing.Size(97, 35)
         Me.btnActive.TabIndex = 9
@@ -130,7 +132,7 @@ Partial Class frmBreed
         '
         Me.btnDeactive.BackColor = System.Drawing.Color.Violet
         Me.btnDeactive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeactive.Location = New System.Drawing.Point(553, 209)
+        Me.btnDeactive.Location = New System.Drawing.Point(483, 212)
         Me.btnDeactive.Name = "btnDeactive"
         Me.btnDeactive.Size = New System.Drawing.Size(114, 35)
         Me.btnDeactive.TabIndex = 10
@@ -140,7 +142,7 @@ Partial Class frmBreed
         'cbPetType
         '
         Me.cbPetType.FormattingEnabled = True
-        Me.cbPetType.Location = New System.Drawing.Point(93, 74)
+        Me.cbPetType.Location = New System.Drawing.Point(90, 71)
         Me.cbPetType.Name = "cbPetType"
         Me.cbPetType.Size = New System.Drawing.Size(121, 21)
         Me.cbPetType.TabIndex = 11

@@ -3,13 +3,18 @@
 ' Programmer:   Llanne Enumerables on July 15, 2020
 
 Public Class frmMain
+    Private pet As PetUpdate
 
-
-    Private Sub btnTestConnection_Click(sender As Object, e As EventArgs) Handles btnTestConnection.Click
+    Private Sub btnTestConnection_Click(sender As Object, e As EventArgs)
         dbConnection()
     End Sub
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If user.Type <> "Admin" Then
+            MenuSettings.Visible = False
+        Else
+            MenuSettings.Visible = True
+        End If
         statusUser.Text = user.Type & ": " & user.FirstName & " " & user.LastName
         Dim strQuery As String
         dbConnection()
@@ -24,14 +29,14 @@ Public Class frmMain
         txtID.Text = RecordCount("tblpet", "petID") + 1
 
         strQuery = "SELECT * FROM tblType"
-        LoadToComboBox(strQuery, cboType, "typeID", "typeName")
+        LoadToComboBox(strQuery, cboType, "typeID", "typeName", "typeStatus")
 
         strQuery = "SELECT breedID, breedName, typeID FROM tblbreed " +
                     "WHERE typeID =  " + cboType.SelectedValue.ToString
-        LoadToComboBox(strQuery, cboBreed, "breedID", "breedName")
+        LoadToComboBox(strQuery, cboBreed, "breedID", "breedName", "breedStatus")
 
         strQuery = "SELECT * FROM tblOwner"
-        LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName")
+        LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName", "ownerStatus")
 
         txtSearch.Text = String.Empty
         btnNew.Enabled = True
@@ -47,7 +52,7 @@ Public Class frmMain
         Try
             strQuery = "SELECT breedID, breedName, typeID FROM tblbreed " +
                 "WHERE typeID = " + cboType.SelectedValue.ToString
-            LoadToComboBox(strQuery, cboBreed, "breedID", "breedName")
+            LoadToComboBox(strQuery, cboBreed, "breedID", "breedName", "breedStatus")
         Catch ex As Exception
             MessageBox.Show("Error: CboType SelectedChangeCommitted() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -92,17 +97,27 @@ Public Class frmMain
         btnSave.Enabled = False
         Dim i As Integer = e.RowIndex
         Try
-            Dim petUpdate As New PetUpdate(CType(dgPets.Item("petID", i).Value, Integer))
-            txtID.Text = petUpdate.ID
-            txtName.Text = petUpdate.Name
-            txtBirthdate.Text = petUpdate.Birthdate
-            cboGender.Text = petUpdate.Gender
-            cboType.SelectedValue = petUpdate.Type.ID
-
-            cboBreed.SelectedValue = petUpdate.Breed.ID
-            cboOwner.SelectedValue = petUpdate.Owner.ID
-            txtNotes.Text = petUpdate.Notes
-            cboStatus.Text = petUpdate.Status
+            pet = New PetUpdate(CType(dgPets.Item("petID", i).Value, Integer))
+            txtID.Text = pet.ID
+            txtName.Text = pet.Name
+            txtBirthdate.Text = pet.Birthdate
+            cboGender.Text = pet.Gender
+            cboType.SelectedValue = pet.Type.ID
+            'Update cboBreed First before anything
+            Dim strQuery As String
+            Try
+                strQuery = "SELECT breedID, breedName, typeID FROM tblbreed " +
+                "WHERE typeID = " + cboType.SelectedValue.ToString
+                LoadToComboBox(strQuery, cboBreed, "breedID", "breedName", "breedStatus")
+            Catch ex As Exception
+                MessageBox.Show("Error: CboType SelectedChangeCommitted() " & ex.Message, "Pet DBMS",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End Try
+            'Resume Display of Click
+            cboBreed.SelectedValue = pet.Breed.ID
+            cboOwner.SelectedValue = pet.Owner.ID
+            txtNotes.Text = pet.Notes
+            cboStatus.Text = pet.Status
         Catch ex As Exception
             MessageBox.Show("Error: Datagrid CellClick() " & ex.Message, "Pet DBMS",
                 MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -118,26 +133,39 @@ Public Class frmMain
         btnSave.Enabled = True
         btnPrint.Enabled = True
         btnClose.Enabled = True
-        'Disable a butoon
+        'Disable a button 
         btnUpdate.Enabled = False
         btnDelete.Enabled = False
         txtID.Text = RecordCount("tblpet", "petID") + 1
         txtName.Text = String.Empty
-        cboType.SelectedIndex = 0
-        cboBreed.SelectedIndex = 0
-        cboOwner.SelectedIndex = 0
+        If cboType.Items.Count > 0 Then
+            cboType.SelectedIndex = 0
+        End If
+        If cboBreed.Items.Count > 0 Then
+            cboBreed.SelectedIndex = 0
+        End If
+        If cboOwner.Items.Count > 0 Then
+            cboOwner.SelectedIndex = 0
+        End If
         cboGender.SelectedIndex = 0
         cboStatus.SelectedIndex = 0
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Dim strQuery As String
+        pet.Name = txtName.Text.Trim
+        pet.Birthdate = Date.ParseExact(txtBirthdate.Text, "dd/MM/yyyy", Nothing).ToString("MM/dd/yyyy")
+        pet.Gender = cboGender.Text
+        pet.Breed = New petBreed(cboBreed.SelectedValue)
+        pet.Owner = New petOwner(cboOwner.SelectedValue)
+        pet.Notes = txtNotes.Text.Trim
+        pet.Status = cboStatus.Text
         Try
-            strQuery = "UPDATE tblpet SET petName='" & txtName.Text & "', petBirthdate= '" & CDate(txtBirthdate.Text).ToString("yyyy-MM-dd") &
-                        "', petGender='" & cboGender.Text & "', petBreed=" & cboBreed.SelectedValue.ToString & ", ownerID=" & cboOwner.SelectedValue.ToString &
-                        ", petNotes='" & txtNotes.Text & "', petStatus='" & cboStatus.Text & "' WHERE petID=" & txtID.Text
-            'MsgBox(strQuery)
-            SQLManager(strQuery, "Record updated.")
+            strQuery = $"UPDATE tblpet SET petName='{pet.Name}', petBirthdate= '{Date.ParseExact(pet.Birthdate, "dd/MM/yyyy", Nothing).ToString("yyyy-MM-dd")}', petGender='{pet.Gender}', petBreed={pet.Breed.ID}, ownerID={pet.Owner.ID}, petNotes='{pet.Notes}', petStatus='{pet.Status}' WHERE petID={pet.ID}"
+            If SQLManager(strQuery) Then
+                SQLManager(pet.Auditlog)
+                MsgBox("Record updated.")
+            End If
             txtID.Text = RecordCount("tblpet", "petID") + 1
             strQuery = "SELECT petID, petName, petBirthdate, petGender, tbltype.typeName, tblbreed.breedName, " +
                             "petNotes, tblOwner.ownerName, tblOwner.ownerAddress, " +
@@ -182,7 +210,7 @@ Public Class frmMain
         frm.ShowDialog()
         txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT * FROM tblType"
-        LoadToComboBox(strQuery, cboType, "typeID", "typeName")
+        LoadToComboBox(strQuery, cboType, "typeID", "typeName", "typeStatus")
 
     End Sub
 
@@ -192,7 +220,7 @@ Public Class frmMain
         frm.ShowDialog()
         txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT * FROM tblOwner"
-        LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName")
+        LoadToComboBox(strQuery, cboOwner, "ownerID", "ownerName", "ownerStatus")
     End Sub
 
     Private Sub btnAddBreed_Click(sender As Object, e As EventArgs) Handles btnAddBreed.Click
@@ -204,7 +232,7 @@ Public Class frmMain
         txtID.Text = RecordCount("tblpet", "petID") + 1
         Dim strQuery As String = "SELECT breedID, breedName, typeID FROM tblbreed " +
                     "WHERE typeID =  " + cboType.SelectedValue.ToString
-        LoadToComboBox(strQuery, cboBreed, "breedID", "breedName")
+        LoadToComboBox(strQuery, cboBreed, "breedID", "breedName", "breedStatus")
 
     End Sub
 
@@ -278,8 +306,37 @@ Public Class frmMain
     End Sub
 
     Private Sub QuitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitToolStripMenuItem.Click
+        Dim form As New frmLogin
+        form.Close()
         Me.Close()
     End Sub
 
+    Private Sub strType_Click(sender As Object, e As EventArgs) Handles strType.Click
+        Dim form As New frmPetType
+        form.ShowDialog()
+    End Sub
 
+    Private Sub strOwner_Click(sender As Object, e As EventArgs) Handles strOwner.Click
+        Dim form As New frmPetOwner
+        form.ShowDialog()
+    End Sub
+
+    Private Sub strBreed_Click(sender As Object, e As EventArgs) Handles strBreed.Click
+        Dim form As New frmBreed
+        form.ShowDialog()
+    End Sub
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        Dim form As New frmPrintPet
+        form.ShowDialog()
+        Dim strQuery As String = String.Empty
+        executePrintlog(strQuery, "Print form")
+        'MsgBox(strQuery)
+        SQLManager(strQuery)
+    End Sub
+
+    Private Sub AuditLogsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AuditLogsToolStripMenuItem.Click
+        Dim form As New frmAuditlog
+        form.ShowDialog()
+    End Sub
 End Class

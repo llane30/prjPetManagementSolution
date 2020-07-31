@@ -1,4 +1,5 @@
 ﻿Public Class frmBreed
+    Private breed As petBreed
     Private _strPetType As String
     Private _intPetTypeID As Integer
     Public WriteOnly Property PetType As String
@@ -30,10 +31,14 @@
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         Else
+            breed.Name = txtBreed.Text
+            breed.Type = New petType(cbPetType.SelectedValue)
             Try
-                strQuery = $"UPDATE tblbreed SET breedname='{txtBreed.Text}', typeID={cbPetType.SelectedValue} WHERE breedID ={txtID.Text}"
-                'MsgBox(strQuery)
-                SQLManager(strQuery, "Record updated.")
+                strQuery = $"UPDATE tblbreed SET breedname='{breed.Name}', typeID={breed.Type.ID} WHERE breedID ={breed.ID}"
+                If SQLManager(strQuery) Then
+                    SQLManager(breed.Auditlog)
+                    MsgBox("Record updated.")
+                End If
             Catch ex As Exception
                 MessageBox.Show("Error: Save() " & ex.Message, "Pet DBMS",
                     MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -48,7 +53,7 @@
 
     Private Sub btnPlus_Click(sender As Object, e As EventArgs) Handles btnPlus.Click
         Dim strQuery As String = "SELECT * FROM tblType"
-        LoadToComboBox(strQuery, cbPetType, "typeID", "typeName")
+        LoadToComboBox(strQuery, cbPetType, "typeID", "typeName", "typeStatus")
         txtID.Text = RecordCount("tblbreed", "breedID") + 1
         cbPetType.SelectedIndex = 0
         btnAdd.Text = "Add"
@@ -85,10 +90,14 @@
     Private Sub dgBreed_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgBreed.CellClick
         btnAdd.Text = "Update"
         Dim i As Integer = e.RowIndex
-        With dgBreed
-            txtID.Text = .Item("breedID", i).Value
-            cbPetType.SelectedValue = .Item("typeID", i).Value
-            txtBreed.Text = .Item("breedname", i).Value
-        End With
+        Try
+            With dgBreed
+                breed = New petBreed(CType(.Item("breedID", i).Value, Integer))
+                txtID.Text = breed.ID
+                cbPetType.SelectedValue = breed.Type.ID
+                txtBreed.Text = breed.Name
+            End With
+        Catch ex As Exception
+        End Try
     End Sub
 End Class

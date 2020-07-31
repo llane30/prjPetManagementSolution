@@ -5,6 +5,7 @@
     Private ownerAddress As String
     Private ownerContactNumber As String
     Private ownerStatus As String
+    Private strAuditlog As String
 
     Public Sub New(intID As Integer)
         Dim dt As DataTable = GetDataTable($"SELECT * FROM tblowner WHERE ownerID = {intID}")
@@ -23,6 +24,45 @@
     Public ReadOnly Property ID As Integer
         Get
             Return ownerID
+        End Get
+    End Property
+
+    Public Property Name As String
+        Get
+            Return ownerName
+        End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Pet Owner Form", "owner name", "owner", ownerID, ownerName, value) Then
+                ownerName = value
+            End If
+        End Set
+    End Property
+
+    Public Property Address As String
+        Get
+            Return ownerAddress
+        End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Pet Owner Form", "owner address", "owner", ownerID, ownerAddress, value) Then
+                ownerAddress = value
+            End If
+        End Set
+    End Property
+
+    Public Property Phone As String
+        Get
+            Return ownerContactNumber
+        End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Pet Owner Form", "owner phone", "owner", ownerID, ownerContactNumber, value) Then
+                ownerContactNumber = value
+            End If
+        End Set
+    End Property
+
+    Public ReadOnly Property Auditlog As String
+        Get
+            Return strAuditlog
         End Get
     End Property
 End Class

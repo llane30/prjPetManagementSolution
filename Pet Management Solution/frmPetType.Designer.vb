@@ -49,7 +49,7 @@ Partial Class frmPetType
         '
         Me.btnAdd.BackColor = System.Drawing.Color.SkyBlue
         Me.btnAdd.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(65, 133)
+        Me.btnAdd.Location = New System.Drawing.Point(117, 125)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(87, 33)
         Me.btnAdd.TabIndex = 2
@@ -60,7 +60,7 @@ Partial Class frmPetType
         '
         Me.btnExit.BackColor = System.Drawing.Color.Blue
         Me.btnExit.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnExit.Location = New System.Drawing.Point(158, 133)
+        Me.btnExit.Location = New System.Drawing.Point(651, 256)
         Me.btnExit.Name = "btnExit"
         Me.btnExit.Size = New System.Drawing.Size(87, 33)
         Me.btnExit.TabIndex = 3
@@ -79,6 +79,7 @@ Partial Class frmPetType
         '
         'txtID
         '
+        Me.txtID.Enabled = False
         Me.txtID.Location = New System.Drawing.Point(95, 38)
         Me.txtID.Multiline = True
         Me.txtID.Name = "txtID"
@@ -87,17 +88,18 @@ Partial Class frmPetType
         '
         'dgType
         '
+        Me.dgType.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgType.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgType.Location = New System.Drawing.Point(300, 12)
+        Me.dgType.Location = New System.Drawing.Point(300, 2)
         Me.dgType.Name = "dgType"
-        Me.dgType.Size = New System.Drawing.Size(449, 229)
+        Me.dgType.Size = New System.Drawing.Size(452, 239)
         Me.dgType.TabIndex = 6
         '
         'btnActive
         '
         Me.btnActive.BackColor = System.Drawing.Color.MediumOrchid
         Me.btnActive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnActive.Location = New System.Drawing.Point(517, 259)
+        Me.btnActive.Location = New System.Drawing.Point(370, 256)
         Me.btnActive.Name = "btnActive"
         Me.btnActive.Size = New System.Drawing.Size(87, 33)
         Me.btnActive.TabIndex = 7
@@ -108,7 +110,7 @@ Partial Class frmPetType
         '
         Me.btnDeactive.BackColor = System.Drawing.Color.DarkOrchid
         Me.btnDeactive.Font = New System.Drawing.Font("Showcard Gothic", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnDeactive.Location = New System.Drawing.Point(610, 259)
+        Me.btnDeactive.Location = New System.Drawing.Point(480, 256)
         Me.btnDeactive.Name = "btnDeactive"
         Me.btnDeactive.Size = New System.Drawing.Size(143, 33)
         Me.btnDeactive.TabIndex = 8
@@ -118,6 +120,7 @@ Partial Class frmPetType
         'txtType
         '
         Me.txtType.Location = New System.Drawing.Point(95, 83)
+        Me.txtType.Multiline = True
         Me.txtType.Name = "txtType"
         Me.txtType.Size = New System.Drawing.Size(150, 20)
         Me.txtType.TabIndex = 9
@@ -136,7 +139,8 @@ Partial Class frmPetType
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Tan
-        Me.ClientSize = New System.Drawing.Size(765, 301)
+        Me.ClientSize = New System.Drawing.Size(763, 295)
+        Me.ControlBox = False
         Me.Controls.Add(Me.btnPlus)
         Me.Controls.Add(Me.txtType)
         Me.Controls.Add(Me.btnDeactive)
@@ -149,7 +153,7 @@ Partial Class frmPetType
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmPetType"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "PetType"
+        Me.Text = "Pet Type"
         CType(Me.dgType, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

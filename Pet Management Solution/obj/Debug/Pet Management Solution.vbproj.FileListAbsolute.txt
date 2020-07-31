@@ -63,20 +63,39 @@ D:\School files\VB\week 7\Pet Management Solution\Pet Management Solution\bin\De
 D:\School files\VB\week 7\Pet Management Solution\Pet Management Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 D:\School files\VB\week 7\Pet Management Solution\Pet Management Solution\bin\Debug\MySql.Data.xml
 D:\School files\VB\week 7\Pet Management Solution\Pet Management Solution\obj\Debug\Pet Management Solution.vbproj.CopyComplete
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.exe
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.exe.config
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\MySql.Data.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.exe
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.pdb
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.xml
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\AxShockwaveFlashObjects.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportSource.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.Shared.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.Windows.Forms.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\ShockwaveFlashObjects.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.ObjectFactory.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Google.Protobuf.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Zstandard.Net.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\K4os.Compression.LZ4.Streams.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\BouncyCastle.Crypto.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Ubiety.Dns.Core.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Renci.SshNet.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\stdole.dll
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\CrystalDecisions.ReportAppServer.CommonControls.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\System.Buffers.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\K4os.Compression.LZ4.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\K4os.Hash.xxHash.dll
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\MySql.Data.xml
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.vbprojAssemblyReference.cache
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmAboutUs.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmBreed.resources
@@ -84,6 +103,8 @@ D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Sol
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmMain.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmPetOwner.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmPetType.resources
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmPrintPet.resources
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmUserInfo.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.Resources.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.SplashScreen1.resources
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.vbproj.GenerateResource.cache
@@ -92,6 +113,4 @@ D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Sol
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.exe
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.xml
 D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet Management Solution.pdb
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.pdb
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\bin\Debug\Pet Management Solution.xml
-D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmUserInfo.resources
+D:\School files\VB\week 7\Pet Management Solution_Enumerables\Pet Management Solution\obj\Debug\Pet_Management_Solution.frmAuditlog.resources

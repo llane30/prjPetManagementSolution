@@ -1,8 +1,8 @@
 ﻿Public Class petType
-
     Private typeID As Integer
     Private typeName As String
     Private typeStatus As String
+    Private strAuditlog As String
 
     Public Sub New(intID As Integer)
         Dim dt As DataTable = GetDataTable($"SELECT * FROM tbltype WHERE typeID = {intID}")
@@ -19,6 +19,23 @@
     Public ReadOnly Property ID As Integer
         Get
             Return typeID
+        End Get
+    End Property
+
+    Public Property Name As String
+        Get
+            Return typeName
+        End Get
+        Set(value As String)
+            If executeUpdatelog(strAuditlog, "Pet Type Form", "type name", "type", typeID, typeName, value) Then
+                typeName = value
+            End If
+        End Set
+    End Property
+
+    Public ReadOnly Property Auditlog As String
+        Get
+            Return strAuditlog
         End Get
     End Property
 

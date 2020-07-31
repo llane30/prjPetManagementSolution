@@ -38,7 +38,6 @@ Module modPet
     Public Function GetDataTable(ByVal strSQL As String) As DataTable
         Try
             dbConnection()
-
             dbConn.Open()
             da = New MySqlDataAdapter(strSQL, dbConn)
             dt = New DataTable
@@ -68,7 +67,12 @@ Module modPet
         Return count
     End Function
 
-    Public Sub LoadToComboBox(ByVal strSQL As String, ByRef combo As ComboBox, ByVal strValue As String, ByVal strDisplay As String)
+    Public Sub LoadToComboBox(ByVal strSQL As String, ByRef combo As ComboBox, ByVal strValue As String, ByVal strDisplay As String, strColumnStatus As String)
+        If strSQL.ToLower.Contains("where") Then
+            strSQL += $" AND {strColumnStatus} = 'Active'"
+        Else
+            strSQL += $" WHERE {strColumnStatus} = 'Active'"
+        End If
         Dim dt = GetDataTable(strSQL)
         combo.DataSource = dt
         combo.ValueMember = dt.Columns(strValue).ToString
@@ -84,7 +88,6 @@ Module modPet
                 .ExecuteNonQuery()
             End With
             dbConn.Close()
-
             MessageBox.Show(strMsg, "Pet DBMS ",
                 MessageBoxButtons.OK, MessageBoxIcon.Information)
         Catch ex As Exception
@@ -93,7 +96,7 @@ Module modPet
         End Try
     End Sub
 
-    Public Sub SQLManager(ByVal strSQL As String)
+    Public Function SQLManager(ByVal strSQL As String) As Boolean
         Try
             dbConn.Open()
             sqlCommand = New MySqlCommand(strSQL, dbConn)
@@ -102,11 +105,11 @@ Module modPet
                 .ExecuteNonQuery()
             End With
             dbConn.Close()
+            Return True
         Catch ex As Exception
-            MessageBox.Show("Error: SQLManager() " & ex.Message, "Pet DBMS",
-                MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
         End Try
-    End Sub
+    End Function
 
     Public Sub executeUnsuccesslog(intID As Integer)
         Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime,logType, userID, logModule, logComment) VALUES 
@@ -126,9 +129,16 @@ Module modPet
         SQLManager(strQuery)
     End Sub
 
-    Public Sub executeUpdatelog()
-
-    End Sub
+    Public Function executeUpdatelog(ByRef strSQL As String, strForm As String, strColumn As String, strObject As String, intID As Integer, beforeValue As String, afterValue As String) As Boolean
+        If beforeValue <> afterValue Then
+            strSQL += $"INSERT INTO tblauditlog (logDateTime, logType, userID, logModule, logComment) VALUES 
+                                    (now(), 3, {user.ID}, '{strForm}', 'Update {strColumn} of {strObject} - #{intID} from ""{beforeValue}"" to ""{afterValue}""'); "
+            'MsgBox($"{beforeValue} to {afterValue}")
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     Public Sub executeDeletelog(strForm As String, strObject As String, intID As Integer)
         Dim strQuery As String = $"INSERT INTO tblauditlog (logDateTime, logType, userID, logModule, logComment) VALUES 
@@ -136,7 +146,8 @@ Module modPet
         SQLManager(strQuery)
     End Sub
 
-    Public Sub executePrintlog()
+    Public Sub executePrintlog(ByRef strQuery As String, strForm As String)
+        strQuery += $"INSERT INTO tblauditlog (logDateTime, logType, userID, logModule, logComment) VALUES (now(), 5, {user.ID}, '{strForm}', 'Print Inactive and Active Pets.')"
 
     End Sub
 
